@@ -12,9 +12,11 @@
     <artifactId>web-task-manager</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>web-task-manager</name>
+
     <description>Spring Boot CRUD application that use Spring Data JPA, PostgreSQL database and Thymeleaf template
         engine for View layer.
     </description>
+
     <properties>
         <java.version>17</java.version>
         <maven.compiler.source>17</maven.compiler.source>
@@ -25,11 +27,12 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-thymeleaf</artifactId>
         </dependency>
+
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
-<!--
+
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-data-jpa</artifactId>
@@ -40,12 +43,13 @@
             <artifactId>postgresql</artifactId>
             <scope>runtime</scope>
         </dependency>
--->
+
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
             <optional>true</optional>
         </dependency>
+
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
@@ -59,7 +63,6 @@
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
                 <configuration>
-
                     <excludes>
                         <exclude>
                             <groupId>org.projectlombok</groupId>

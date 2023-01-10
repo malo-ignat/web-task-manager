@@ -2,6 +2,7 @@ package edu.ignat.webtaskmanager.service;
 
 import edu.ignat.webtaskmanager.entity.Task;
 
+import java.util.Collection;
 import java.util.List;
 
 public interface TaskService {
@@ -12,8 +13,8 @@ public interface TaskService {
 
     Task delete(Task task);
 
-    List<Task> getAllTasks();
+    Collection<Task> getAllTasks();
 
-    List<Task> getAllUncompletedTasks();
+    Collection<Task> getAllUncompletedTasks();
 
 }
