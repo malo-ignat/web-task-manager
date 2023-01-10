@@ -1,27 +1,28 @@
 package edu.ignat.webtaskmanager.service;
 
 import edu.ignat.webtaskmanager.entity.Task;
+import edu.ignat.webtaskmanager.repository.SqlTaskRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.Collection;
 import java.util.List;
 
 @Service
 @AllArgsConstructor
 public class DefaultTaskService implements TaskService {
 
-    private final TaskRepository taskRepository;
+    private final SqlTaskRepository taskRepository;
 
     @Override
     public Task add(Task task) {
-        taskRepository.save(task);
-        return task;
+        return taskRepository.save(task);
     }
 
     @Override
     public Task update(Task task) {
-        taskRepository.update(task);
-        return task;
+        Task updatedTask = taskRepository.getById(task.getId());
+        return taskRepository.save(updatedTask);
     }
 
     @Override
@@ -31,13 +32,13 @@ public class DefaultTaskService implements TaskService {
     }
 
     @Override
-    public List<Task> getAllTasks() {
-        return taskRepository.getAllTasks();
+    public Collection<Task> getAllTasks() {
+        return taskRepository.findAll();
     }
 
     @Override
-    public List<Task> getAllUncompletedTasks() {
-        return taskRepository.getAllUncompletedTasks();
+    public Collection<Task> getAllUncompletedTasks() {
+        return taskRepository.findAllUncompletedTasks();
     }
 
 }
