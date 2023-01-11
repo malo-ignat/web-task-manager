@@ -3,15 +3,15 @@ package edu.ignat.webtaskmanager.service;
 import edu.ignat.webtaskmanager.entity.Task;
 import edu.ignat.webtaskmanager.repository.SqlTaskRepository;
 import lombok.AllArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
 import java.util.Optional;
 
 @Service
 @AllArgsConstructor
 public class DefaultTaskService implements TaskService {
-
     private final SqlTaskRepository taskRepository;
 
     @Override
@@ -37,18 +37,18 @@ public class DefaultTaskService implements TaskService {
     }
 
     @Override
-    public List<Task> getAllTasks() {
-        return taskRepository.findAll();
+    public Page<Task> getAllTasks(Pageable pageable) {
+        return taskRepository.findAll(pageable);
     }
 
     @Override
-    public List<Task> getAllUncompletedTasks() {
-        return taskRepository.findAllUncompletedTasks();
+    public Page<Task> getAllUncompletedTasks(Pageable pageable) {
+        return taskRepository.findAllUncompletedTasks(pageable);
     }
 
     @Override
-    public List<Task> findByTitleContainingIgnoreCase(String keyword) {
-        return taskRepository.findByTitleContainingIgnoreCase(keyword);
+    public Page<Task> findByTitleContainingIgnoreCase(String keyword, Pageable pageable) {
+        return taskRepository.findByTitleContainingIgnoreCase(keyword, pageable);
     }
 
 }
