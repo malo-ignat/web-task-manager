@@ -2,8 +2,8 @@ package edu.ignat.webtaskmanager.service;
 
 import edu.ignat.webtaskmanager.entity.Task;
 
-import java.util.Collection;
 import java.util.List;
+import java.util.Optional;
 
 public interface TaskService {
 
@@ -13,8 +13,12 @@ public interface TaskService {
 
     Task delete(Task task);
 
-    Collection<Task> getAllTasks();
+    Optional<Task> getById(Long id);
 
-    Collection<Task> getAllUncompletedTasks();
+    List<Task> getAllTasks();
+
+    List<Task> getAllUncompletedTasks();
+
+    List<Task> findByTitleContainingIgnoreCase(String keyword);
 
 }
