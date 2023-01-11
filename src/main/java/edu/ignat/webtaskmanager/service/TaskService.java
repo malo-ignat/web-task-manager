@@ -1,8 +1,9 @@
 package edu.ignat.webtaskmanager.service;
 
 import edu.ignat.webtaskmanager.entity.Task;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 
-import java.util.List;
 import java.util.Optional;
 
 public interface TaskService {
@@ -15,10 +16,10 @@ public interface TaskService {
 
     Optional<Task> getById(Long id);
 
-    List<Task> getAllTasks();
+    Page<Task> getAllTasks(Pageable pageable);
 
-    List<Task> getAllUncompletedTasks();
+    Page<Task> getAllUncompletedTasks(Pageable pageable);
 
-    List<Task> findByTitleContainingIgnoreCase(String keyword);
+    Page<Task> findByTitleContainingIgnoreCase(String keyword, Pageable pageable);
 
 }
