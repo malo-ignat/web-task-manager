@@ -5,8 +5,8 @@ import edu.ignat.webtaskmanager.repository.SqlTaskRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
-import java.util.Collection;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @AllArgsConstructor
@@ -32,13 +32,23 @@ public class DefaultTaskService implements TaskService {
     }
 
     @Override
-    public Collection<Task> getAllTasks() {
+    public Optional<Task> getById(Long id) {
+        return taskRepository.findById(id);
+    }
+
+    @Override
+    public List<Task> getAllTasks() {
         return taskRepository.findAll();
     }
 
     @Override
-    public Collection<Task> getAllUncompletedTasks() {
+    public List<Task> getAllUncompletedTasks() {
         return taskRepository.findAllUncompletedTasks();
+    }
+
+    @Override
+    public List<Task> findByTitleContainingIgnoreCase(String keyword) {
+        return taskRepository.findByTitleContainingIgnoreCase(keyword);
     }
 
 }
